@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsup src/server.ts",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "fastify": "^4.24.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "prisma": "^5.7.0",
+    "tsup": "^8.0.1",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId    String      @id @default(uuid())
+  name      String
+  email     String      @unique
+  password  String
+  UserEvent UserEvent[]
+}
+
+model Event {
+  eventId     String      @id @default(uuid())
+  name        String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  UserEvent   UserEvent[]
+}
+
+model UserEvent {
+  confirmed Boolean @default(false)
+  event     Event   @relation(fields: [eventId], references: [eventId])
+  eventId   String
+  user      User    @relation(fields: [userId], references: [userId])
+  userId    String
+
+  @@id([eventId, userId])
+}
